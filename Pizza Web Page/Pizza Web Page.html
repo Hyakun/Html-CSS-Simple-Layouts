@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Problema 5 Js</title>
+    <style>
+        body{
+    background-image:linear-gradient(
+    115deg, rgba(58, 58, 158, 0.8),
+        rgba(136, 136, 206, 0.7)
+  ),url(pan-pizza-tapet-1920x1080_48.jpg);
+    background-size:cover;
+  }
+        form{
+    background-color:rgba(19, 32, 50, 0.8);
+    margin-right:30%;
+    margin-left:30%;
+    padding-top:30px;
+    padding-bottom:50px;
+    padding-right:30px;
+    padding-left:30px;
+    border-radius:7px;
+  }
+        label{
+    color:white;
+    display:block;
+    margin-top:20px;
+    margin-bottom:20px;
+    
+  }
+  .labelsradio{
+    display:inline;
+  }
+  .inputclass{
+    height:30px;
+    width:100%;
+    border-radius:7px;
+  }
+  .middle{
+    text-align:center;
+    color:white;
+  }
+  button{
+    height:40px;
+    background-color:lightgreen;
+    border-radius:7px;
+    width:40%;
+    margin-top:30px;
+    margin-right:30%;
+    margin-left:30%;
+  }
+    </style>
+</head>
+<body>
+    <h1 class="middle">Original Pizza</h1>
+    <form id="date">
+        <label id="name-label" for="name">Name</label>
+            <input class="inputclass" type="text" placeholder="Introdu Numele" id="name" name="name" required>
+        <label id="name-label" for="adresa">Adresa</label>
+            <input class="inputclass" type="text" placeholder="Introdu Adresa" id="adresa" name="adresa" required>
+        </form>
+
+        <h2 class="middle">Alege-ti pizza:</h1>
+        <form id="pizza">
+            <input value="Pizza Capriciosa" type="checkbox">
+        <label class="labelsradio">Pizza Capriciosa</label><br>
+            <input value="Pizza Diavola" type="checkbox">
+        <label class="labelsradio">Pizza Diavola</label><br>
+            <input value="Pizza Vegetariana" type="checkbox">
+        <label class="labelsradio">Pizza Vegetariana</label><br>
+            <input value="Pizza Tonno" type="checkbox">
+        <label class="labelsradio">Pizza Tonno</label><br>
+            <input value="Pizza Quattro Stagione" type="checkbox">
+        <label class="labelsradio">Pizza Quattro Stagione</label><br>
+            <input value="Pizza Quattro Fromaggi" type="checkbox">
+        <label class="labelsradio">Pizza Quattro Fromaggi</label><br>
+            <input value="Pizza Taraneasca" type="checkbox">
+        <label class="labelsradio">Pizza Taraneasca</label><br>
+            <input value="Pizza Mixta" type="checkbox">
+        <label class="labelsradio">Pizza Mixta</label>
+        </form>
+        <h2 class="middle">Alege-ti marimea pizzei:</h1>
+        <form id="marime">
+            <input type="radio" name="marime" value="mica">
+            <label class="labelsradio">Mica</label><br>
+            <input type="radio" name="marime" value="medie">
+            <label class="labelsradio">Medie</label><br>
+            <input type="radio" name="marime" value="mare">
+            <label class="labelsradio">Mare</label><br>
+        </form>
+        <h2 class="middle">Alege-ti Bautura:</h1>
+        <form id="suc">
+            <input type="radio" name="suc" value="Coca Cola">
+            <label class="labelsradio">Coca Cola</label><br>
+            <input type="radio" name="suc" value="Pepsi">
+            <label class="labelsradio">Pepsi</label><br>
+            <input type="radio" name="suc" value="Fanta">
+            <label class="labelsradio">Fanta</label><br>
+        </form>
+        <h2 class="middle">Alege-ti Sosul:</h1>
+        <form id="sos">
+            <input type="radio" name="sos" value="Picant">
+            <label class="labelsradio">Picant</label><br>
+            <input type="radio" name="sos" value="Dulce">
+            <label class="labelsradio">Dulce</label><br>
+        </form>
+        <h2 class="middle">Doriti toppinguri in plus?</h1>
+        <form id="topping">
+                <input value="Mozzarella" type="checkbox">
+            <label class="labelsradio">Mozzarella</label><br>
+                <input value="Cabanos" type="checkbox">
+            <label class="labelsradio">Cabanos</label><br>
+                <input value="Ardei" type="checkbox">
+            <label class="labelsradio">Ardei</label><br>
+                <input value="Salam" type="checkbox">
+            <label class="labelsradio">Salam</label><br>
+                <input value="Bacon" type="checkbox">
+            <label class="labelsradio">Bacon</label><br>
+                <input value="Porumb" type="checkbox">
+            <label class="labelsradio">Porumb</label><br>
+        
+        </form>
+        <button onclick="calculeazaPretul()">Trimite Comanda</button>
+</body>
+<script>
+function calculeazaPretul(){
+    var pret = 0;
+    var pretPizzaMarime = 0;
+   var x =document.getElementById("date").elements;
+   var datelePersoanei = "Buna ziua, " + x[0].value + ", s-a inregistrat o livrare la adresa, " +x[1].value;
+   x = document.getElementById("marime").elements;
+   for(let i = 0; i<x.length; i++){
+       if (x[i].checked){
+           switch(x[i].value){
+           case "mica":
+               pretPizzaMarime = 17;
+               break;
+            case "medie":
+                pretPizzaMarime = 25;
+                break;
+            case "mare":
+                pretPizzaMarime = 30;
+            
+           }
+
+       }
+    }
+   var pizza = "Ati comandat: ";
+   x = document.getElementById("pizza").elements;
+
+   for(let i = 0; i<x.length; i++){
+       if (x[i].checked){
+           pizza = pizza + x[i].value + " ";
+           pret = pret + pretPizzaMarime;
+       }
+   }
+
+   var bautura = "Racoritoarea aleasa este: ";
+   x = document.getElementById("suc").elements;
+   for(let i = 0; i<x.length; i++){
+       if (x[i].checked){
+           bautura = bautura + x[i].value;
+       }
+   }
+
+   var sos = "Sos ";
+   x = document.getElementById("sos").elements;
+   for(let i = 0; i<x.length; i++){
+       if (x[i].checked){
+           sos = sos + x[i].value;
+       }
+   }
+   var topping = "Toppingturi aditionale: "; 
+   x = document.getElementById("topping").elements;
+
+   for(let i = 0; i<x.length; i++){
+       if (x[i].checked){
+           topping = topping + x[i].value + " ";
+           pret = pret + 2;
+       }
+   }
+
+   alert(datelePersoanei + "\n" + pizza + "\n" + bautura + "\n" + sos + "\n" + topping + "\n Pretul total este: " + pret.toString());
+}
+</script>
+</html>
